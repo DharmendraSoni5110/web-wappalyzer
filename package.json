@@ -4,6 +4,7 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
-    "wappalyzer": "^6.11.9"
+    "@wappalyzer/wappalyzer": "^9.9.99",
+    "wappalyzer": "^6.10.57"
   }
 }
