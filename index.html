@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Wappalyzer</title>
+  <link rel="stylesheet" href="public/style.css" />
+</head>
+<body>
+  <h1>🕵️ Mini Wappalyzer</h1>
+  <form id="analyze-form">
+    <input type="text" id="url" placeholder="https://example.com" required />
+    <button type="submit">Analyze</button>
+  </form>
+
+  <div id="results"></div>
+
+  <script>
+    const form = document.getElementById('analyze-form')
+    const resultsDiv = document.getElementById('results')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const url = document.getElementById('url').value
+      resultsDiv.innerHTML = '<p>Analyzing...</p>'
+
+      try {
+        const res = await fetch(`/api/analyze?url=${encodeURIComponent(url)}`)
+        const data = await res.json()
+        if (data.error) throw new Error(data.error)
+
+        resultsDiv.innerHTML = `
+          <h3>Detected Technologies:</h3>
+          <ul>
+            ${data.technologies
+              .map(
+                (t) =>
+                  `<li><strong>${t.name}</strong> – ${t.categories
+                    .map((c) => c.name)
+                    .join(', ')}</li>`
+              )
+              .join('')}
+          </ul>
+        `
+      } catch (err) {
+        resultsDiv.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`
+      }
+    })
+  </script>
+</body>
+</html>

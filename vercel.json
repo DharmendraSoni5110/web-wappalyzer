@@ -1,0 +1,4 @@
+{
+  "builds": [{ "src": "api/analyze.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.html" }]
+}

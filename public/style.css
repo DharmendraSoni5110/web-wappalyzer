@@ -1,0 +1,25 @@
+body {
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  padding: 40px;
+  background: #f7f8fa;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 300px;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-left: 5px;
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+}

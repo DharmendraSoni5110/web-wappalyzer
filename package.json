@@ -1,0 +1,9 @@
+{
+  "name": "web-wappalyzer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "wappalyzer": "^6.11.9"
+  }
+}
